@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyDevs Blog</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* HEADER */
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* SEARCH BAR */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 5px 15px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 50px;
+        }
+
+        .search-container i {
+            color: #6a11cb;
+            font-size: 18px;
+        }
+
+        /* SOCIAL ICONS */
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            margin-top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* BLOG CARDS */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        /* DARK MODE */
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+
+        .dark-mode .card {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header-container">
+        <img src="https://myblog.fly.storage.tigris.dev/logo%20.jpg" alt="Logo" class="logo">
+        <h1 class="header-title">LAZYDEVS BLOG</h1>
+
+        <!-- SEARCH BAR -->
+        <div class="search-container">
+            <input type="text" id="search-box" placeholder="Search blog..." onkeyup="filterBlogs()">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons">
+            <a href="https://github.com/RohanKumar101" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/rohit-gorai-773040219/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Rohit0110117285" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <!-- THEME TOGGLE -->
+        <div class="theme-toggle" id="theme-button">🌙</div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="cards-container" id="blog-cards">
+            <div class="card" data-title="The Neon Future">
+                <img src="https://myblog.fly.storage.tigris.dev/blogimage1.png" alt="Neon Future">
+                <h2>The Neon Future</h2>
+                <p>Explore the cyberpunk-inspired web trends shaping the digital world.</p>
+            </div>
+
+            <div class="card" data-title="AI & Creativity">
+                <img src="https://myblog.fly.storage.tigris.dev/Blog2.png" alt="AI Creativity">
+                <h2>AI & Creativity</h2>
+                <p>Is AI helping creativity or replacing it?</p>
+            </div>
+
+            <div class="card" data-title="Glitch Aesthetic">
+                <img src="https://myblog.fly.storage.tigris.dev/Blog3.png" alt="Glitch Aesthetic">
+                <h2>Glitch Aesthetic</h2>
+                <p>How glitch art is influencing modern web design.</p>
+            </div>
+
+            <div class="card" data-title="The Rise of Dark Mode">
+                <img src="https://myblog.fly.storage.tigris.dev/Blog4.png" alt="Dark Mode">
+                <h2>The Rise of Dark Mode</h2>
+                <p>Why more people are choosing dark mode for their apps.</p>
+            </div>
+
+            <div class="card" data-title="Web 3.0 Revolution">
+                <img src="https://myblog.fly.storage.tigris.dev/Blog5.png" alt="Web 3.0">
+                <h2>Web 3.0 Revolution</h2>
+                <p>How blockchain and decentralization are reshaping the internet.</p>
+            </div>
+
+            <div class="card" data-title="Minimalist Design Trends">
+                <img src="https://myblog.fly.storage.tigris.dev/Blog6.png" alt="Minimalism">
+                <h2>Minimalist Design Trends</h2>
+                <p>Why simplicity is dominating the UI/UX industry.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© <span id="year"></span> LazyDevs</p>
+    </footer>
+
+    <script>
+        // AUTO UPDATE YEAR
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // THEME TOGGLE
+        const themeButton = document.getElementById('theme-button');
+        themeButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // SEARCH FUNCTION
+        function filterBlogs() {
+            let searchValue = document.getElementById('search-box').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                let title = card.getAttribute('data-title').toLowerCase();
+                card.style.display = title.includes(searchValue) ? "block" : "none";
+            });
+        }
+    </script>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+</body>
+</html>
