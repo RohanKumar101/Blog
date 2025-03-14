@@ -83,9 +83,34 @@
 
         /* THEME TOGGLE */
         .theme-toggle {
-            margin-top: 10px;
-            font-size: 24px;
+
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 16px;
             cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: background 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Dark Mode Theme Toggle */
+        .dark-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hover Effect in Dark Mode */
+        .dark-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
         }
 
         /* BLOG CARDS */
@@ -102,7 +127,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            padding: 40px;
             text-align: center;
             transition: transform 0.3s;
         }
@@ -113,7 +138,8 @@
 
         .card img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 20px;
+            border: #4d23a2 solid 1.5px;
         }
 
         /* FOOTER */
@@ -126,6 +152,7 @@
             bottom: 0;
             width: 100%;
             font-size: 16px;
+            position: relative;
         }
 
         /* DARK MODE */
@@ -137,6 +164,19 @@
         .dark-mode .card {
             background: #333;
             color: white;
+        }
+
+        a {
+            text-decoration: none;
+            /* Removes underline */
+            color: inherit;
+            /* Inherits color from parent */
+        }
+
+        a:visited,
+        a:active {
+            color: inherit;
+            /* Prevents color change after clicking */
         }
     </style>
 </head>
@@ -156,7 +196,8 @@
         <!-- SOCIAL ICONS -->
         <div class="social-icons">
             <a href="https://github.com/RohanKumar101" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/rohit-gorai-773040219/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/rohit-gorai-773040219/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
             <a href="https://x.com/Rohit0110117285" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
 
@@ -167,41 +208,48 @@
     <!-- MAIN CONTENT -->
     <main>
         <div class="cards-container" id="blog-cards">
-            <div class="card" data-title="The Neon Future">
-                <img src="https://myblog.fly.storage.tigris.dev/blogimage1.png" alt="Neon Future">
-                <h2>The Neon Future</h2>
-                <p>Explore the cyberpunk-inspired web trends shaping the digital world.</p>
-            </div>
-
-            <div class="card" data-title="AI & Creativity">
-                <img src="https://myblog.fly.storage.tigris.dev/Blog2.png" alt="AI Creativity">
-                <h2>AI & Creativity</h2>
-                <p>Is AI helping creativity or replacing it?</p>
-            </div>
-
-            <div class="card" data-title="Glitch Aesthetic">
-                <img src="https://myblog.fly.storage.tigris.dev/Blog3.png" alt="Glitch Aesthetic">
-                <h2>Glitch Aesthetic</h2>
-                <p>How glitch art is influencing modern web design.</p>
-            </div>
-
-            <div class="card" data-title="The Rise of Dark Mode">
-                <img src="https://myblog.fly.storage.tigris.dev/Blog4.png" alt="Dark Mode">
-                <h2>The Rise of Dark Mode</h2>
-                <p>Why more people are choosing dark mode for their apps.</p>
-            </div>
-
-            <div class="card" data-title="Web 3.0 Revolution">
-                <img src="https://myblog.fly.storage.tigris.dev/Blog5.png" alt="Web 3.0">
-                <h2>Web 3.0 Revolution</h2>
-                <p>How blockchain and decentralization are reshaping the internet.</p>
-            </div>
-
-            <div class="card" data-title="Minimalist Design Trends">
-                <img src="https://myblog.fly.storage.tigris.dev/Blog6.png" alt="Minimalism">
-                <h2>Minimalist Design Trends</h2>
-                <p>Why simplicity is dominating the UI/UX industry.</p>
-            </div>
+            <a href="post1.html">
+                <div class="card" data-title="The Neon Future" onclick="location.href='post1.html'">
+                    <img src="https://myblog.fly.storage.tigris.dev/swagger.png" alt="Neon Future">
+                    <h2>Create Login and Logout Functionality in Swagger UI Using Django REST Framework</h2>
+  
+                </div>
+            </a>
+            <a href="post2.html">
+                <div class="card" data-title="AI & Creativity" onclick="location.href='post2.html'">
+                    <img src="https://myblog.fly.storage.tigris.dev/Blog2.png" alt="AI Creativity">
+                    <h2>AI & Creativity</h2>
+                    <p>Is AI helping creativity or replacing it?</p>
+                </div>
+            </a>
+            <a href="post3.html">
+                <div class="card" data-title="Glitch Aesthetic">
+                    <img src="https://myblog.fly.storage.tigris.dev/Blog3.png" alt="Glitch Aesthetic">
+                    <h2>Glitch Aesthetic</h2>
+                    <p>How glitch art is influencing modern web design.</p>
+                </div>
+            </a>
+            <a href="post4.html">
+                <div class="card" data-title="The Rise of Dark Mode">
+                    <img src="https://myblog.fly.storage.tigris.dev/Blog4.png" alt="Dark Mode">
+                    <h2>The Rise of Dark Mode</h2>
+                    <p>Why more people are choosing dark mode for their apps.</p>
+                </div>
+            </a>
+            <a href="post5.html">
+                <div class="card" data-title="Web 3.0 Revolution">
+                    <img src="https://myblog.fly.storage.tigris.dev/Blog5.png" alt="Web 3.0">
+                    <h2>Web 3.0 Revolution</h2>
+                    <p>How blockchain and decentralization are reshaping the internet.</p>
+                </div>
+            </a>
+            <a href="post6.html">
+                <div class="card" data-title="Minimalist Design Trends">
+                    <img src="https://myblog.fly.storage.tigris.dev/Blog6.png" alt="Minimalism">
+                    <h2>Minimalist Design Trends</h2>
+                    <p>Why simplicity is dominating the UI/UX industry.</p>
+                </div>
+            </a>
         </div>
     </main>
 

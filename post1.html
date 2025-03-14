@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Login and Logout in Swagger UI | LazyDevs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+  
+
+        /* SOCIAL ICONS */
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+
+
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .code-container {
+            position: relative;
+            background: #222;
+            color: #fff;
+            padding: 15px;
+
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .code-container pre {
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 0;
+            padding-right: 40px;
+            /* Prevents text from overlapping the copy button */
+            max-width: 100%;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+
+        .copy-btn:hover {
+            color: #00c3ff;
+        }
+
+        /* Tooltip (Copied Message) */
+        .tooltip {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            background: #d5e1d5;
+            color: black;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tooltip.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-container">
+        <img src="https://myblog.fly.storage.tigris.dev/logo%20.jpg" alt="Logo" class="logo">
+        <h1 class="header-title">LAZYDEVS BLOG</h1>
+
+        <!-- SEARCH BAR -->
+
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons">
+            <a href="https://github.com/RohanKumar101" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/rohit-gorai-773040219/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Rohit0110117285" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+
+   
+    </header>
+
+    <div class="container">
+        <h1>Create Login and Logout Functionality in Swagger UI Using Django REST Framework</h1>
+        <p>Learn how to integrate <b>Login & Logout</b> functionality in <b>Swagger UI</b> using Django REST Framework.
+        </p>
+
+        <img src="https://myblog.fly.storage.tigris.dev/swagger.png" alt="Swagger UI Preview">
+
+        <h2>1️⃣ Install Required Packages</h2>
+        <div class="code-container">
+            <pre id="install-code">pip install django drf-yasg djangorestframework mysqlclient</pre>
+            <button class="copy-btn" onclick="copyToClipboard('install-code', this)"><i
+                    class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>2️⃣ Update <code>settings.py</code></h2>
+        <h3>📌 Add Required Apps</h3>
+        <div class="code-container">
+            <pre id="settings-apps">
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'swagger',
+    'drf_yasg',
+]
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('settings-apps', this)"><i
+                    class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h3>📌 Configure MySQL Database</h3>
+        <div class="code-container">
+            <pre id="settings-db">
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'name',
+        'PASSWORD': 'yourpassword',
+        'HOST': 'yourhost',
+        'PORT': '3306',
+    }
+}
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('settings-db', this)"><i class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>3️⃣ Update <code>urls.py</code></h2>
+        <div class="code-container">
+            <pre id="urls-code">
+from django.contrib import admin
+from django.urls import path, include, re_path
+from django.shortcuts import redirect
+from rest_framework import permissions
+from quickstart.views import custom_logout
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Swagger API",
+        default_version='v1',
+        description="API documentation for the API model",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
+def redirect_to_swagger(request):
+    return redirect('/swagger/')
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('', redirect_to_swagger),
+    path('logout/', custom_logout, name='custom_logout'),
+]
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('urls-code', this)"><i class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>4️⃣ Create <code>views.py</code></h2>
+        <div class="code-container">
+            <pre id="views-code">
+from django.shortcuts import render
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def custom_logout(request):
+    logout(request)
+    return redirect('/swagger/')
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('views-code', this)"><i class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>5️⃣ Run Migrations</h2>
+        <div class="code-container">
+            <pre id="migrate-code">
+python manage.py makemigrations
+python manage.py migrate
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('migrate-code', this)"><i
+                    class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>6️⃣ Create Superuser</h2>
+        <div class="code-container">
+            <pre id="superuser-code">
+python manage.py createsuperuser
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('superuser-code', this)"><i
+                    class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>7️⃣ Run Server</h2>
+        <div class="code-container">
+            <pre id="runserver-code">
+python manage.py runserver
+            </pre>
+            <button class="copy-btn" onclick="copyToClipboard('runserver-code', this)"><i
+                    class="fas fa-copy"></i></button>
+            <div class="tooltip">Copied!</div>
+        </div>
+
+        <h2>✅ Final Step</h2>
+        <p>Now, visit <code>http://127.0.0.1:8000/swagger/</code> to test the login and logout functionality in Swagger
+            UI.</p>
+    </div>
+    <script>
+
+        // Copy to Clipboard Function
+        function copyToClipboard(id, button) {
+            let text = document.getElementById(id).textContent.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                let tooltip = button.nextElementSibling;
+                tooltip.classList.add("show");
+                setTimeout(() => {
+                    tooltip.classList.remove("show");
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+</body>
+</html>
